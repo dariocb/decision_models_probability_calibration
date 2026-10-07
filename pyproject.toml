@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "decision-models-probability-calibration"
+version = "0.1.0"
+description = "Experiments in probabilistic coherence for schema-conditioned decision models"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "torch>=2.11",
+  "transformers>=5.10.2",
+]
+
+[project.optional-dependencies]
+clef = [
+  "accelerate>=1.12",
+  "huggingface-hub>=0.27",
+  "datasets>=3.2",
+  "pandas>=2.2",
+  "matplotlib>=3.9",
+  "torchvision==0.26.*",
+  "jupyter>=1.1",
+]
+test = ["pytest>=8.0"]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/decision_models"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
